@@ -1,0 +1,5 @@
+e is the Maximum continous compounding,100% growth after one time period
+value = ~2.718
+
+<p> to calculate for a different interest and time period- <b> e^rt </p> 
+where r=rate and t= time period
