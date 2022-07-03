@@ -21,6 +21,7 @@ for mean replace=.     df["column"].replace(np.nan,df["column"].mean())
 
 df.astype().  df["price"]=df["price"].astype("int")
 
+df.sort_values(["column to sort"], ascending=False/True,axis=0,inplace=True)
 
 # data normalisation
 simple feature scaling xnew= xold/xmax
