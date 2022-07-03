@@ -54,3 +54,13 @@ lr.coef
 
 # multiple linear regression
 x_train= df[["column_name1","column_name2","column_name3"]]
+lr= LinearRegression
+lr.fit(x_train,y_train)
+
+# polynomial regression
+pr= PolynimialFeatures(degree=n)
+x_train_pr= pr.fit_transform(df[["column_name1","column_name2","column_name3"])
+x_test_pr= pr.fit_transform(df[["column_name1","column_name2","column_name3"])
+lr.fit(x_train_pr,y_train)
+lr.score(x_test_pr,y_test)
+
