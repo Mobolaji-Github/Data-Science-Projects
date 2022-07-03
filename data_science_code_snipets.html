@@ -79,9 +79,33 @@ yhat=pipe.predict(x_test)
 from sklearn.metrics import mean_squared_error
 mean_squared_error(actual_value,predicted_value)
 
-#r^2
+#r^2 
 R^2=(1-(MSE of regresssion line/MSE of the average of the data))
 value close to 1 is good
 value close to 0 isnt a good fit
 value of negative can be caused by overfitting  "the fitted line does curves too much to the training data making it a poor fit on the test data."
 lr.score(x_test_pr,y_test)  "x_test is used to calculate the predicted value of y, y_test is the actual value"
+
+# Ridge regression "to prevent overfitting"
+alpha values = 0,0.001,0.01,0.1,1,10
+increasing value of alpha causes underfitting cus it reduces the coef of each variable in a polynomial regression
+decreasing the value produces the opp effect
+from sklearn.linear_model import Ridge
+RidgeModel= Ridge(alpha=0.1)
+RidgeModel.fit(x_train,y_train)
+yhat=RidgeModel.predict(x_train)
+train the model with different values of alpha => make prediction => calculate the R^2 => best value of alpha = highest value of R^2
+
+#grid search
+Grid search is a cross-validation technique that iterates over hyperparameters like alpha
+Data is divided into three Training,Validation(used to select the best hyperparameter to increase the r^2), Test
+from sklearn.linear_model import Ridge
+from sklearn.model_selection import GridSearchCV
+parameters1=[{"alpha":[0.001,0.01,0.1,1,10,100,1000,10000,100000]}]
+parameters1=[{"alpha":[0.001,0.01,0.1,1,10,100,1000,10000,100000],"normalize":[True,False]}]   "to also nomalize"
+RR=Ridge()
+Grid1= GridSearchCV(RR,parameters1,cv=4)
+Grid1.fit(x_train,y_train)
+Grid1.best_estimator_
+scores=Grid1.cv_results_
+scores["mean_test_score"]
