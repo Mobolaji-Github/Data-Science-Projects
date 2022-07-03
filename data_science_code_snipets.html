@@ -104,8 +104,9 @@ from sklearn.model_selection import GridSearchCV
 parameters1=[{"alpha":[0.001,0.01,0.1,1,10,100,1000,10000,100000]}]
 parameters1=[{"alpha":[0.001,0.01,0.1,1,10,100,1000,10000,100000],"normalize":[True,False]}]   "to also nomalize"
 RR=Ridge()
-Grid1= GridSearchCV(RR,parameters1,cv=4)
+Grid1= GridSearchCV(RR,parameters1,cv=4)   "cv divides the training data into four, selects 3 and uses one for testing"
 Grid1.fit(x_train,y_train)
 Grid1.best_estimator_
+classifier.best_score_
 scores=Grid1.cv_results_
 scores["mean_test_score"]
