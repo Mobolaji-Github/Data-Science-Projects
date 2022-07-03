@@ -34,3 +34,6 @@ df["price-binned"]= pd.cut(df["price"],bins,labels=group_names,include_lowest=Tr
 
 # one hot encoding
 pd.get_dummies(df["columns"])
+
+from sklearn.model_selection import train_test_split
+x_train,x_test,y_train,y_test=train_test_split(x_data,y_data,test_size=0.3,random_state=0)
