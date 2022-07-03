@@ -1,0 +1,36 @@
+# Important Data science codes
+
+import pandas as pd
+df= pd.read_csv(filepath")
+
+df.columns= headers.  (*headers is a list given seperately)
+
+df.to_csv(path) *to save csv file into computer
+
+# df analysis
+df.dtypes. *data types of each column
+df.describe() *statistical analysis of colunms in numbers
+df.describe(include = "all")  *for all columns
+df.info.   (top30 nd bottom 30)
+df.value_counts()
+
+# handling missing data
+df.dropna(df["column"], axis=0 , inplace=True).  *axis=0 for rows , axis=1 for columns.
+df.replace(missing_value,new_value) 
+for mean replace=.     df["column"].replace(np.nan,df["column"].mean())
+
+df.astype().  df["price"]=df["price"].astype("int")
+
+
+# data normalisation
+simple feature scaling xnew= xold/xmax
+min-max = xold-xmin/(x-max-xmin)     result ranges btw 0-1
+z-score= xold-u/o   result ranges btw -3 nd 3.     u=mean  0=std
+
+for bining to categorize numeric values
+bins= np.linespace(min(df["price"]),max(["price"]),4).    --this makes for 3 categories
+group_names= []
+df["price-binned"]= pd.cut(df["price"],bins,labels=group_names,include_lowest=True)
+
+# one hot encoding
+pd.get_dummies(df["columns"])
