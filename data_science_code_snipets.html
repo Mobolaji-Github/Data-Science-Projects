@@ -58,9 +58,30 @@ lr= LinearRegression
 lr.fit(x_train,y_train)
 
 # polynomial regression
-pr= PolynimialFeatures(degree=n)
+from sklearn.preprocessing import PolynomialFeatures
+pr= PolynimialFeatures(degree=n, include_bias=False)
 x_train_pr= pr.fit_transform(df[["column_name1","column_name2","column_name3"])
 x_test_pr= pr.fit_transform(df[["column_name1","column_name2","column_name3"])
 lr.fit(x_train_pr,y_train)
-lr.score(x_test_pr,y_test)
+lr.score(x_test_pr,y_test) (get the r^2)
 
+# pipelines library
+from sklearn.preprocessing import PolynomialFeatures
+from sklearn.linear_model import LinearRegression
+from sklearn.preprocessing import StandardScaler
+from sklearn.pipeline import Pipeline
+Input=[("scale",StandardScaler()),("polynimial",PolynimialFeatures(degree=n)),("mode",LinearRegression())]
+pipe= Pipeline(Input)
+pipe.fit(x_train,y_train)
+yhat=pipe.predict(x_test)
+
+#Mean squared error(MSE)
+from sklearn.metrics import mean_squared_error
+mean_squared_error(actual_value,predicted_value)
+
+#r^2
+R^2=(1-(MSE of regresssion line/MSE of the average of the data))
+value close to 1 is good
+value close to 0 isnt a good fit
+value of negative can be caused by overfitting  "the fitted line does curves too much to the training data making it a poor fit on the test data."
+lr.score(x_test_pr,y_test)  "x_test is used to calculate the predicted value of y, y_test is the actual value"
