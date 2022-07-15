@@ -47,11 +47,11 @@ yhat= cross_val_predict(lr,x_data,y_data,cv=3)
 # linear regression.  #if the relationship btw independent and dependent variables are non-linear using scatter-plot use non-linear regression
 (import linear_model from scikit-learn)
 from sklearn.linear_model import LinearRegression
-lr= LinearRegression
+lr= LinearRegression()
 lr.fit(x_train,y_train)
 yhat=lr.predict(x_test)
 lr.intercept_
-lr.coef
+lr.coef_
 
 # multiple linear regression
 x_train= df[["column_name1","column_name2","column_name3"]]
